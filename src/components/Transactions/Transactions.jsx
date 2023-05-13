@@ -32,7 +32,7 @@ Transactions.propTypes = {
             id: PropTypes.string.isRequired,
             type: PropTypes.oneOf(["invoice", "payment", "withdrawal", "deposit"]).isRequired,
             amount: PropTypes.string.isRequired,
-            amount: PropTypes.string.isRequired,
+            currency: PropTypes.string.isRequired,
         })
     ).isRequired,
 };
