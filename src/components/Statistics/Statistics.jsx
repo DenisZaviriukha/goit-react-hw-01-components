@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { ListItem, ListLable, ListPercentage, StatisticHeader, StatisticList, StatisticSection } from './Statistics.styled';
 
-export const Statistics = ({ items } ) => {
+export const Statistics = ({ title ,stats } ) => {
     return (
         <StatisticSection>
-            <StatisticHeader>Upload stats</StatisticHeader>
+            {title.header ? <StatisticHeader>{title.header}</StatisticHeader> : <></>}
             <StatisticList>
-                {items.map( item => (
+                {stats.map( item => (
                     <ListItem key={item.id}>
                         <ListLable>{item.label}</ListLable>
                         <ListPercentage>{item.percentage}%</ListPercentage>
@@ -18,7 +18,10 @@ export const Statistics = ({ items } ) => {
 } 
 
 Statistics.propTypes = {
-    items: PropTypes.arrayOf(
+    title: PropTypes.shape({
+        title: PropTypes.string,
+    }),
+    stats: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             label: PropTypes.oneOf([".docx", ".pdf", ".mp3", ".psd"]).isRequired,
